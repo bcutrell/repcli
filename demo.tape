@@ -3,7 +3,7 @@ Set Width 800
 Set Height 500
 Set FontSize 16
 
-Type "./clifit"
+Type "./repcli"
 Enter
 Sleep 1s
 
