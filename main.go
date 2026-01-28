@@ -243,7 +243,7 @@ func (m model) View() string {
 }
 
 func (m model) viewMenu() string {
-	s := titleStyle.Render("CLIFIT") + "\n"
+	s := titleStyle.Render("REPCLI") + "\n"
 	s += dimStyle.Render("Select a workout") + "\n\n"
 
 	for i, w := range m.workouts {

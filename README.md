@@ -1,4 +1,4 @@
-# clifit
+# repcli
 
 No GUI, no excuses
 
@@ -7,8 +7,8 @@ No GUI, no excuses
 ## Run
 
 ```bash
-go build -o clifit .
-./clifit
+go build -o repcli .
+./repcli
 ```
 
 ## Controls
@@ -46,7 +46,7 @@ Upper Body:
 
 Ask an AI to create a `workouts.yaml` for you. Example prompt:
 
-> Create a workouts.yaml file for clifit. Here's my situation:
+> Create a workouts.yaml file for repcli. Here's my situation:
 >
 > - 42 year old male
 > - Haven't exercised since the series finale of Lost (2010)
