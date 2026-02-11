@@ -1,92 +1,183 @@
-# Curlit Workouts
-# Format: name | sets | tempo (optional) | notes (optional)
+# Repcli Workouts
+# Format: Exercise name | sets | tempo (optional) | notes (optional)
 
-Pull Day:
-  Morning Activation (5-7 min):
-    - Dead hangs from pull-up bar | 2 x 20-30 sec
-    - Band or light DB face pulls | 2 x 15
-    - Thoracic rotations | 1 min each side
+- group: 5-Day Program
+  workouts:
+    - name: Day 1 - Squat Focus
+      blocks:
+        - name: Strength Ladder
+          exercises:
+            - DB Goblet Squats | 2-4-6-8-10 reps | | 5 pull-ups after each set
+        - name: 12-min AMRAP
+          exercises:
+            - DB Front Squats + Box Step-ups + Ab Wheel + Burpees | 10/10/10/5 per round | | Squat to box for knee mod
 
-  Strength Block A - Back Focus (10-15 min):
-    - DB Bent Over Rows | 3 x 10-12 each | 2s pull, 3s lower | Go heavy (35-50 lbs)
-    - Pull-ups or Assisted Pull-ups | 3 x 6-10 | Controlled | Use band if needed
-    - DB Pullover | 3 x 12 | Slow stretch at bottom | Great for lats + serratus
+    - name: Day 2 - Press Focus
+      blocks:
+        - name: 16-min EMOM
+          exercises:
+            - DB Strict Press | 8 reps | | Min 1
+            - Push Press | 8 reps | | Min 2
+            - Single-arm DB Push Press | 8 reps (4 each) | | Min 3
+            - TRX Tricep Extensions | 8 reps | | Min 4
+        - name: Chipper
+          exercises:
+            - DB Push Press | 30 reps | | For time
+            - Pull-ups | 20 reps
+            - Pike Push-ups | 30 reps | | Or DB Z-press
+            - TRX Rows | 20 reps
+            - Flutter Kicks | 50 reps
 
-  Strength Block B - Biceps & Rear Delts (10-15 min):
-    - Incline DB Curls | 3 x 10-12 | 3 sec down | Maximum stretch at bottom
-    - Hammer Curls | 3 x 12 | Slow and strict | Forearms + brachialis
-    - Reverse Flyes (bent over) | 3 x 15 | Squeeze at top | Light weight, rear delts
-    - Concentration Curls | 2 x 10 each | Squeeze at top | Finish with a pump
+    - name: Day 3 - Deadlift Focus
+      blocks:
+        - name: E2MOM x 10 min
+          exercises:
+            - DB Romanian Deadlifts + Bent-over Rows | 8 reps each | Slow, controlled
+        - name: Descending Ladder (10-8-6-4-2)
+          exercises:
+            - DB Deadlifts + Hang Cleans + Burpees | 10-8-6-4-2 reps each | | 10 ab wheel rollouts after each round
 
-  End of Day Flexibility (5-10 min):
-    - Lat stretch on pull-up bar | 30 sec each side
-    - Supine twist | 1 min each side
-    - Forearm stretches | 30 sec each
-    - Neck stretches | 30 sec each direction
+    - name: Day 4 - Mixed Modal
+      blocks:
+        - name: DT-Style (5 rounds for time)
+          exercises:
+            - DB Deadlifts + Hang Cleans + Push Jerks + Pull-ups | 12/9/6/3 per round
+        - name: Core Finisher (3 rounds)
+          exercises:
+            - Ab Wheel + Hollow Rocks + Plank | 12/20/30sec per round
 
-Push Day:
-  Morning Activation (5-7 min):
-    - Shoulder circles | 30 sec each direction
-    - Band pull-aparts or light DB rear flyes | 2 x 15 | | 10 lbs
-    - Cat-cow stretches | 1 min
-    - Scapular push-ups | 2 x 10
+    - name: Day 5 - Full Send Friday
+      blocks:
+        - name: Chipper (for time)
+          exercises:
+            - DB Goblet Squats | 50 reps
+            - DB Snatches (alternating) | 40 reps
+            - Pull-ups | 30 reps
+            - DB Thrusters | 20 reps
+            - Burpees | 10 reps
+            - DB Thrusters | 20 reps
+            - TRX Rows | 30 reps
+            - DB Romanian Deadlifts | 40 reps
+            - Sit-ups | 50 reps
+        - name: Burnout EMOM (8 min)
+          exercises:
+            - DB Curls + Box Dips | 12 reps each | | Alternating minutes
 
-  Strength Block A - Chest Focus (10-15 min):
-    - DB Floor Press | 3 x 10-12 | 3s down, 1s pause, 2s up | Safer for shoulder than bench
-    - Push-ups (or TRX push-ups) | 3 x 12-15 | Slow and controlled | Modify width for comfort
-    - DB Squeeze Press | 2 x 12 | Constant squeeze | Light weight, maximum contraction
+    - name: Saturday - Yoga Recovery
+      blocks:
+        - name: Yoga Flow (30-45 min)
+          exercises:
+            - Hip Openers | 10 min | | Focus on deep stretches
+            - Hamstring Stretches | 10 min
+            - Thoracic Mobility | 10 min
+            - Full Flow | 15 min | | Search yoga for athletes or CrossFit recovery yoga
 
-  Strength Block B - Shoulders & Triceps (10-15 min):
-    - Seated Lateral Raises | 3 x 12-15 | 2s up, 3s down | Start 10-15 lbs
-    - TRX Tricep Extensions | 3 x 12 | Slow eccentric | Great time under tension
-    - DB Overhead Tricep Extension | 3 x 12 | 3 sec down | Single DB, both hands
-    - Front Plate/DB Raise | 2 x 10 | 2s hold at top | Build shoulder stability
+    - name: Sunday - Mobility Recovery
+      blocks:
+        - name: Light Mobility (20-25 min)
+          exercises:
+            - Foam Rolling | 10-15 min | | Full body
+            - Stretch Routine | 10 min
+            - Easy Walk or Bike | Optional | | Light movement
 
-  End of Day Flexibility (5-10 min):
-    - Doorway chest stretch | 30 sec each side
-    - Thread the needle | 5 each side
-    - Child's pose | 1 min
-    - Shoulder cross-body stretch | 30 sec each
+- group: Classic Split
+  workouts:
+    - name: Pull Day
+      blocks:
+        - name: Morning Activation (5-7 min)
+          exercises:
+            - Dead hangs from pull-up bar | 2 x 20-30 sec
+            - Band or light DB face pulls | 2 x 15
+            - Thoracic rotations | 1 min each side
+        - name: Strength Block A - Back Focus (10-15 min)
+          exercises:
+            - DB Bent Over Rows | 3 x 10-12 each | 2s pull, 3s lower | Go heavy (35-50 lbs)
+            - Pull-ups or Assisted Pull-ups | 3 x 6-10 | Controlled | Use band if needed
+            - DB Pullover | 3 x 12 | Slow stretch at bottom | Great for lats + serratus
+        - name: Strength Block B - Biceps & Rear Delts (10-15 min)
+          exercises:
+            - Incline DB Curls | 3 x 10-12 | 3 sec down | Maximum stretch at bottom
+            - Hammer Curls | 3 x 12 | Slow and strict | Forearms + brachialis
+            - Reverse Flyes (bent over) | 3 x 15 | Squeeze at top | Light weight, rear delts
+            - Concentration Curls | 2 x 10 each | Squeeze at top | Finish with a pump
+        - name: End of Day Flexibility (5-10 min)
+          exercises:
+            - Lat stretch on pull-up bar | 30 sec each side
+            - Supine twist | 1 min each side
+            - Forearm stretches | 30 sec each
+            - Neck stretches | 30 sec each direction
 
-Leg Day:
-  Morning Activation (5-7 min):
-    - Glute bridges | 2 x 15
-    - Clamshells | 2 x 12 each side
-    - Ankle circles | 20 each direction
-    - Quad stretch | 30 sec each
+    - name: Push Day
+      blocks:
+        - name: Morning Activation (5-7 min)
+          exercises:
+            - Shoulder circles | 30 sec each direction
+            - Band pull-aparts or light DB rear flyes | 2 x 15 | | 10 lbs
+            - Cat-cow stretches | 1 min
+            - Scapular push-ups | 2 x 10
+        - name: Strength Block A - Chest Focus (10-15 min)
+          exercises:
+            - DB Floor Press | 3 x 10-12 | 3s down, 1s pause, 2s up | Safer for shoulder than bench
+            - Push-ups (or TRX push-ups) | 3 x 12-15 | Slow and controlled | Modify width for comfort
+            - DB Squeeze Press | 2 x 12 | Constant squeeze | Light weight, maximum contraction
+        - name: Strength Block B - Shoulders & Triceps (10-15 min)
+          exercises:
+            - Seated Lateral Raises | 3 x 12-15 | 2s up, 3s down | Start 10-15 lbs
+            - TRX Tricep Extensions | 3 x 12 | Slow eccentric | Great time under tension
+            - DB Overhead Tricep Extension | 3 x 12 | 3 sec down | Single DB, both hands
+            - Front Plate/DB Raise | 2 x 10 | 2s hold at top | Build shoulder stability
+        - name: End of Day Flexibility (5-10 min)
+          exercises:
+            - Doorway chest stretch | 30 sec each side
+            - Thread the needle | 5 each side
+            - Child's pose | 1 min
+            - Shoulder cross-body stretch | 30 sec each
 
-  Strength Block A - Quads & Glutes (10-15 min):
-    - Goblet Squat | 3 x 12 | 3s down, 2s pause | Control descent, protect knee
-    - DB Romanian Deadlift | 3 x 12 | 3 sec down | Hamstrings + glutes
-    - TRX Assisted Pistol Squat | 2 x 8 each | Slow | Use TRX to reduce knee load
+    - name: Leg Day
+      blocks:
+        - name: Morning Activation (5-7 min)
+          exercises:
+            - Glute bridges | 2 x 15
+            - Clamshells | 2 x 12 each side
+            - Ankle circles | 20 each direction
+            - Quad stretch | 30 sec each
+        - name: Strength Block A - Quads & Glutes (10-15 min)
+          exercises:
+            - Goblet Squat | 3 x 12 | 3s down, 2s pause | Control descent, protect knee
+            - DB Romanian Deadlift | 3 x 12 | 3 sec down | Hamstrings + glutes
+            - TRX Assisted Pistol Squat | 2 x 8 each | Slow | Use TRX to reduce knee load
+        - name: Strength Block B - Hamstrings & Calves (10-15 min)
+          exercises:
+            - DB Sumo Squat | 3 x 12 | Pause at bottom | Inner thighs + glutes
+            - Single-Leg Glute Bridge | 3 x 10 each | 2s hold at top | No knee stress
+            - Standing Calf Raises | 3 x 15 | 2s squeeze at top | Full range of motion
+            - Wall Sit | 2 x 30-45 sec | Isometric hold | Quad endurance, low impact
+        - name: End of Day Flexibility (5-10 min)
+          exercises:
+            - Pigeon pose | 1 min each side
+            - Lying hamstring stretch | 30 sec each
+            - Hip flexor stretch | 1 min each side
+            - Figure-4 stretch | 1 min each side
 
-  Strength Block B - Hamstrings & Calves (10-15 min):
-    - DB Sumo Squat | 3 x 12 | Pause at bottom | Inner thighs + glutes
-    - Single-Leg Glute Bridge | 3 x 10 each | 2s hold at top | No knee stress
-    - Standing Calf Raises | 3 x 15 | 2s squeeze at top | Full range of motion
-    - Wall Sit | 2 x 30-45 sec | Isometric hold | Quad endurance, low impact
+    - name: Active Recovery
+      blocks:
+        - name: Choose Your Recovery (20-30 min)
+          exercises:
+            - Yoga flow | 20-30 min | | YouTube Yoga with Adriene
+            - TRX mobility circuit | 20-30 min | | Reach throughs, deep squats, hip openers
+            - Light Peloton ride | 20-30 min | | Zone 2
+            - Walk outside | 20-30 min | | Fresh air
 
-  End of Day Flexibility (5-10 min):
-    - Pigeon pose | 1 min each side
-    - Lying hamstring stretch | 30 sec each
-    - Hip flexor stretch | 1 min each side
-    - Figure-4 stretch | 1 min each side
+- group: Quick Workouts
+  workouts:
+    - name: Quick Upper Body
+      blocks:
+        - name: Circuit (10 min, 3 rounds)
+          exercises:
+            - Push-ups + DB Curls + DB Lateral Raises | 15/12/12 per round
 
-Active Recovery:
-  Choose Your Recovery (20-30 min):
-    - Yoga flow | 20-30 min | | YouTube Yoga with Adriene
-    - TRX mobility circuit | 20-30 min | | Reach throughs, deep squats, hip openers
-    - Light Peloton ride | 20-30 min | | Zone 2
-    - Walk outside | 20-30 min | | Fresh air
-
-Quick Upper Body:
-  Circuit (10 min):
-    - Push-ups | 3 rounds x 15
-    - DB Curls | 3 rounds x 12
-    - DB Lateral Raises | 3 rounds x 12
-
-Quick Lower Body:
-  Circuit (10 min):
-    - Goblet Squats | 3 rounds x 12
-    - RDLs | 3 rounds x 12
-    - Glute Bridges | 3 rounds x 15
+    - name: Quick Lower Body
+      blocks:
+        - name: Circuit (10 min, 3 rounds)
+          exercises:
+            - Goblet Squats + RDLs + Glute Bridges | 12/12/15 per round
