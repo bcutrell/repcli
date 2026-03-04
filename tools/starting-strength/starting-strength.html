@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting Strength</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #444;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ff6b35;
+        }
+
+        .date {
+            font-size: 1.2em;
+            color: #888;
+        }
+
+        .exercise {
+            background: #2a2a2a;
+            border-left: 5px solid #ff6b35;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .exercise-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .exercise-count {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .target {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .progress-bar {
+            background: #444;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4CAF50, #66BB6A);
+            height: 100%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        .progress-fill.complete {
+            background: linear-gradient(90deg, #ff6b35, #ff8c61);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #ff8c61;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .undo {
+            background: #666;
+            flex: 0.3;
+        }
+
+        .undo:hover {
+            background: #888;
+        }
+
+        .summary {
+            background: #2a2a2a;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            text-align: center;
+            border: 2px solid #444;
+        }
+
+        .summary h2 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .total-reps {
+            font-size: 2.5em;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .reset-btn {
+            background: #d32f2f;
+            margin-top: 20px;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reset-btn:hover {
+            background: #f44336;
+        }
+
+        .tally-marks {
+            font-size: 1.4em;
+            color: #888;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            font-family: monospace;
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            background: #1a1a1a;
+            border-radius: 5px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab { background: #333; color: #888; flex: 1; }
+        .tab.active { background: #ff6b35; color: white; }
+        .history-row { background: #2a2a2a; border-radius: 5px; margin-bottom: 10px; padding: 15px; cursor: pointer; }
+        .history-row-main { display: flex; align-items: center; gap: 15px; }
+        .history-date { flex: 1; color: #ff6b35; font-weight: bold; }
+        .history-total { white-space: nowrap; font-size: 1.1em; }
+        .history-bar { flex: 1; background: #444; height: 10px; border-radius: 5px; overflow: hidden; }
+        .history-bar-fill { background: #4CAF50; height: 100%; }
+        .history-details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid #444; }
+        .history-details.open { display: block; }
+        .history-detail { display: flex; justify-content: space-between; color: #888; padding: 4px 0; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏋️ STARTING STRENGTH</h1>
+        <div class="date" id="currentDate"></div>
+    </header>
+
+    <nav class="tabs">
+      <button onclick="showView('tracker')" id="tab-tracker" class="tab active">Today</button>
+      <button onclick="showView('history')" id="tab-history" class="tab">History</button>
+    </nav>
+
+    <div id="exercises"></div>
+
+    <div id="history" style="display:none"></div>
+
+    <div class="summary">
+        <h2>Total Daily Reps</h2>
+        <div class="total-reps" id="totalReps">0</div>
+        <div style="color: #888; margin-top: 10px;">Target: 350 reps</div>
+        <button class="reset-btn" onclick="resetDay()">Reset Today</button>
+    </div>
+
+    <script>
+        const EXERCISES = [
+            { name: "Pull-Ups", target: 50, id: "pullups" },
+            { name: "DB Overhead Press", target: 50, id: "ohp" },
+            { name: "DB Bent-Over Row", target: 50, id: "rows" },
+            { name: "DB Floor Press", target: 50, id: "floorpress" },
+            { name: "DB Romanian Deadlift", target: 50, id: "rdl" },
+            { name: "Goblet Squats", target: 50, id: "squats" },
+            { name: "Ab Roller", target: 50, id: "abroller" }
+        ];
+
+        let workoutData = {};
+        const today = new Date().toISOString().split('T')[0];
+
+        function loadData() {
+            const saved = localStorage.getItem(`workout:${today}`);
+            workoutData = saved ? JSON.parse(saved) : Object.fromEntries(EXERCISES.map(ex => [ex.id, 0]));
+            renderExercises();
+        }
+
+        function saveData() {
+            localStorage.setItem(`workout:${today}`, JSON.stringify(workoutData));
+        }
+
+        function addReps(exerciseId, amount) {
+            workoutData[exerciseId] = (workoutData[exerciseId] || 0) + amount;
+            renderExercises();
+            saveData();
+        }
+
+        function makeTallyMarks(count) {
+            const groups = Math.floor(count / 5);
+            const remainder = count % 5;
+            let marks = '';
+            
+            for (let i = 0; i < groups; i++) {
+                marks += '𝍸 ';
+            }
+            
+            marks += '|'.repeat(remainder);
+            
+            return marks || '—';
+        }
+
+        function renderExercises() {
+            const container = document.getElementById('exercises');
+            container.innerHTML = '';
+
+            EXERCISES.forEach(exercise => {
+                const count = workoutData[exercise.id] || 0;
+                const percentage = Math.min((count / exercise.target) * 100, 100);
+                const isComplete = count >= exercise.target;
+
+                const div = document.createElement('div');
+                div.className = 'exercise';
+                div.innerHTML = `
+                    <div class="exercise-header">
+                        <div>
+                            <div class="exercise-name">${exercise.name}</div>
+                            <div class="target">Target: ${exercise.target} reps</div>
+                        </div>
+                        <div class="exercise-count">${count}</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill ${isComplete ? 'complete' : ''}" 
+                             style="width: ${percentage}%">
+                            ${percentage.toFixed(0)}%
+                        </div>
+                    </div>
+                    <div class="tally-marks">${makeTallyMarks(count)}</div>
+                    <div class="buttons">
+                        <button onclick="addReps('${exercise.id}', 1)">+1</button>
+                        <button onclick="addReps('${exercise.id}', 5)">+5</button>
+                        <button onclick="addReps('${exercise.id}', 10)">+10</button>
+                        <button class="undo" onclick="addReps('${exercise.id}', -1)">-1</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const total = Object.values(workoutData).reduce((sum, val) => sum + val, 0);
+            document.getElementById('totalReps').textContent = total;
+        }
+
+        function resetDay() {
+            if (confirm('Reset all exercises for today? This cannot be undone.')) {
+                EXERCISES.forEach(ex => {
+                    workoutData[ex.id] = 0;
+                });
+                renderExercises();
+                saveData();
+            }
+        }
+
+        function showView(view) {
+            document.getElementById('exercises').style.display = view === 'tracker' ? '' : 'none';
+            document.querySelector('.summary').style.display = view === 'tracker' ? '' : 'none';
+            document.getElementById('history').style.display = view === 'history' ? '' : 'none';
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(`tab-${view}`).classList.add('active');
+            if (view === 'history') renderHistory();
+        }
+
+        function getHistory() {
+            const days = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (!key.startsWith('workout:')) continue;
+                const date = key.replace('workout:', '');
+                const data = JSON.parse(localStorage.getItem(key));
+                const total = Object.values(data).reduce((s, v) => s + v, 0);
+                const perExercise = EXERCISES.map(ex => ({ name: ex.name, reps: data[ex.id] || 0, target: ex.target }));
+                days.push({ date, total, perExercise });
+            }
+            return days.sort((a, b) => b.date.localeCompare(a.date));
+        }
+
+        function renderHistory() {
+            const days = getHistory();
+            const container = document.getElementById('history');
+            if (days.length === 0) {
+                container.innerHTML = '<p style="color:#888; text-align:center; padding:40px">No history yet. Complete a workout first!</p>';
+                return;
+            }
+            container.innerHTML = days.map(day => {
+                const pct = Math.min((day.total / 350) * 100, 100).toFixed(0);
+                const dateLabel = new Date(day.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                const detailRows = day.perExercise.map(e =>
+                    `<div class="history-detail"><span>${e.name}</span><span>${e.reps} / ${e.target}</span></div>`
+                ).join('');
+                return `
+                    <div class="history-row" onclick="this.querySelector('.history-details').classList.toggle('open')">
+                        <div class="history-row-main">
+                            <span class="history-date">${dateLabel}</span>
+                            <span class="history-total">${day.total} <span style="color:#888">/ 350</span></span>
+                            <div class="history-bar"><div class="history-bar-fill" style="width:${pct}%"></div></div>
+                        </div>
+                        <div class="history-details">${detailRows}</div>
+                    </div>`;
+            }).join('');
+        }
+
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        loadData();
+    </script>
+</body>
+</html>
