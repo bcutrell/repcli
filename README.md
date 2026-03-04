@@ -64,6 +64,27 @@ Ask an AI to create a `workouts.yaml` for you. Example prompt:
 >     - Exercise | sets | tempo (optional) | notes (optional)
 > ```
 
+## Secondary Tools
+
+Standalone trackers based on the [Starting Strength](https://startingstrength.com) dumbbell program.
+Each tracks 7 exercises toward a daily 350-rep goal.
+
+### Web (browser, no install)
+Open `tools/starting-strength/starting-strength.html` in any browser.
+Progress saves to `localStorage`.
+
+<!-- screenshot: open the HTML file, take a screenshot showing the tracker with a couple exercises in progress -->
+![Starting Strength Web Tracker](tools/starting-strength/screenshot-web.png)
+
+### Terminal (Python 3, no dependencies)
+```bash
+python3 tools/starting-strength/starting_strength.py
+```
+Navigate with arrows, add reps with `+`/`-` or `1`/`5`/`0`.
+
+<!-- screenshot: run the python script, take a terminal screenshot with iTerm or similar -->
+![Starting Strength Terminal Tracker](tools/starting-strength/screenshot-terminal.png)
+
 ---
 
 Built with [Claude Code](https://claude.ai/code)
